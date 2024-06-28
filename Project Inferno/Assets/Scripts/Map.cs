@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Map : ScriptableObject
 {
-    //public GameObject[][] create(int size)
-    //{
-        //GameObject[][] map = new GameObject[size][size];
-        //return new GameObject[size][size];
-    //}
+    /*public GameObject[][] create(int size)
+    {
+        GameObject[][] map = new GameObject[size*2][size*2]();
+        
+    }*/
 }
