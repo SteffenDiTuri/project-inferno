@@ -24,8 +24,8 @@ public class Room : MonoBehaviour
 
     public GameObject generate(bool chest, int entrance)
     {
-        GameObject chestObj = transform.Find("Chest").gameObject;
-        chestObj.SetActive(chest);
+        //GameObject chestObj = transform.Find("Chest").gameObject;
+        //chestObj.SetActive(chest);
         primaryEntrance = entrance;
         int exit = Random.Range(0, 3);
         while(exit == primaryEntrance)
