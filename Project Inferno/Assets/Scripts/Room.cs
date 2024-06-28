@@ -28,11 +28,12 @@ public class Room : MonoBehaviour
         //chestObj.SetActive(chest);
         primaryEntrance = entrance;
         int exit = Random.Range(0, 3);
-        while(exit == primaryEntrance)
+        while((exit == primaryEntrance) || (exit == 0 && !roomsDown) || (exit == 1 && !roomsLeft) || (exit == 2 && !roomsUp) || (exit == 3 && !roomsRight))
         {
             exit = Random.Range(0, 3);
         }
         primaryExit = exit;
+        
         return this.gameObject;
     }
 }
