@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class CombatManager : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed = 5.0f;
-    private Player player; // Change to Player type
-
-    void Start() {
+    private Player player;
+    // Start is called before the first frame update
+    void Start()
+    {
         GameObject playerGameObject = GameObject.Find("Player");
         if (playerGameObject == null)
         {
@@ -21,20 +20,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.LogError("Player component not found on the Player GameObject.");
             }
+            player.SetCombatState(true);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player != null && !player.IsInCombat())
-        {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
-
-            Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
-
-            transform.Translate(direction * _speed * Time.deltaTime);
-        }
+        
     }
 }
