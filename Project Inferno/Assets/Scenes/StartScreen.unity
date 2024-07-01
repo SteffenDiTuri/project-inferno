@@ -843,7 +843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &708831398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1563,7 +1563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press "Cross" to enter Hell...
+  m_text: Click on the Cross to Enter Hell...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1c6279f0c305e90489dec3419d3a4d2c, type: 2}
   m_sharedMaterial: {fileID: 1879013661198372180, guid: 1c6279f0c305e90489dec3419d3a4d2c, type: 2}

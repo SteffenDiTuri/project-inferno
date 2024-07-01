@@ -22,7 +22,7 @@ public class StartGame : MonoBehaviour
     void Update()
     {
         if(mAnimator != null && !isAnimating){
-            if(Input.GetKeyDown(KeyCode.X)){
+            if(Input.GetMouseButtonDown(0)){
                 mAnimator.SetTrigger("Start");
                 StartCoroutine(WaitForAnimation());
             }
