@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 561927665733185565}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,10 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e7a10c42b0e224ba369f2466c8826a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Jos
-  HP: 10
-  Level: 0
-  Damage: 1
+  characterName: Jos
+  characterLevel: 999
+  characterDamage: 10
+  maxHP: 25
+  currentHP: 20
   MP: 0
   SP: 0
 --- !u!1 &4532699452020374466
