@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 361894211801394156}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2741873, y: -0.27284253, z: -0.085240856}
+  m_LocalPosition: {x: 0, y: 0, z: -0.085240856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,7 +50,7 @@ MonoBehaviour:
   roomsRight: 0
   roomsUp: 0
   roomsDown: 1
-  primaryExit: 0
+  primaryExit: 1
   primaryEntrance: 0
 --- !u!1 &5964573078263589082
 GameObject:
@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 9022633952817807303}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2741873, y: 0.27284253, z: 0.085240856}
+  m_LocalPosition: {x: 0, y: 0, z: 0.085240856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
