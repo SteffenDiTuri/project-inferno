@@ -50,28 +50,24 @@ public class Dungeon : MonoBehaviour
                 switch (previousRoom.primaryExit)
                 {
                     case 0:
-                        Debug.Log("entrance: up");
                         mapY -= 1;
                         index = Random.Range(0, roomsDoorUp.Count);
                         room = Instantiate(roomsDoorUp[index].GetComponent<Room>().generate(false, 2, new Vector2(mapX, mapY)));
                         room.transform.position = previousRoom.transform.position + new Vector3(0, -10.8f, 0);
                         break;
                     case 1:
-                        Debug.Log("entrance: right");
                         mapX -= 1;
                         index = Random.Range(0, roomsDoorRight.Count);
                         room = Instantiate(roomsDoorRight[index].GetComponent<Room>().generate(false, 3, new Vector2(mapX, mapY)));
                         room.transform.position = previousRoom.transform.position + new Vector3(-19.25f, 0, 0);
                         break;
                     case 2:
-                        Debug.Log("entrance: down");
                         mapY += 1;
                         index = Random.Range(0, roomsDoorDown.Count);
                         room = Instantiate(roomsDoorDown[index].GetComponent<Room>().generate(false, 0, new Vector2(mapX, mapY)));
                         room.transform.position = previousRoom.transform.position + new Vector3(0, 10.8f, 0);
                         break;
                     case 3:
-                        Debug.Log("entrance: left");
                         mapX += 1;
                         index = Random.Range(0, roomsDoorLeft.Count);
                         room = Instantiate(roomsDoorLeft[index].GetComponent<Room>().generate(false, 1, new Vector2(mapX, mapY)));
@@ -88,7 +84,6 @@ public class Dungeon : MonoBehaviour
                 else
                 {
                     Destroy(room);
-                    Debug.Log("oopsie whoopsie");
                     if (map.roomSequence.Count >= 2)
                     {
                         GameObject lastRoom = map.roomSequence[map.roomSequence.Count - 1];
@@ -104,14 +99,12 @@ public class Dungeon : MonoBehaviour
 
                         if (map.roomSequence.Count > 0)
                         {
-                            Debug.Log(map.roomSequence[map.roomSequence.Count - 1]);
                             previousRoom = map.roomSequence[map.roomSequence.Count - 1].GetComponent<Room>();
                             mapX = (int)previousRoom.location.x;
                             mapY = (int)previousRoom.location.y;
                         }
                         else
                         {
-                            Debug.LogWarning("No rooms left to backtrack.");
                             break;
                         }
                     }

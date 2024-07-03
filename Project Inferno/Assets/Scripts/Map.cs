@@ -38,7 +38,6 @@ public class Map : ScriptableObject
         {
             if (i)
             {
-                Debug.Log(i);
                 roomSequence.Add(i);
             }
         }
