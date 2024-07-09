@@ -22,10 +22,9 @@ public class Dungeon : MonoBehaviour
     void Start()
     {
         generateRooms(10, startRoom);
-        printTotalRooms();
+        //printTotalRooms();
         replaceBadDoors();
-        printTotalRooms();
-        printTotalRooms();
+        //printTotalRooms();
     }
 
     void printTotalRooms()
@@ -58,7 +57,7 @@ public class Dungeon : MonoBehaviour
         map.setElement(mapX, mapY, firstRoom);
         GameObject room = null;
 
-        for (int i = 0; i < total; i++)
+        for (int i = 0; i <= total; i++)
         {
             int index = 0;
             int spawnAmount = 1;
@@ -67,33 +66,72 @@ public class Dungeon : MonoBehaviour
 
             while (spawnAmount != 0 && attempts < maxAttempts)
             {
-                switch (previousRoom.primaryExit)
+                if (i == total && spawnAmount == 1)
                 {
-                    case 0:
-                        mapY -= 1;
-                        index = UnityEngine.Random.Range(0, roomsDoorUp.Count);
-                        room = Instantiate(roomsDoorUp[index].GetComponent<Room>().generateWithRandomExit(false, 2, new Vector2(mapX, mapY)));
-                        room.transform.position = previousRoom.transform.position + new Vector3(0, -10.8f, 0);
-                        break;
-                    case 1:
-                        mapX -= 1;
-                        index = UnityEngine.Random.Range(0, roomsDoorRight.Count);
-                        room = Instantiate(roomsDoorRight[index].GetComponent<Room>().generateWithRandomExit(false, 3, new Vector2(mapX, mapY)));
-                        room.transform.position = previousRoom.transform.position + new Vector3(-19.25f, 0, 0);
-                        break;
-                    case 2:
-                        mapY += 1;
-                        index = UnityEngine.Random.Range(0, roomsDoorDown.Count);
-                        room = Instantiate(roomsDoorDown[index].GetComponent<Room>().generateWithRandomExit(false, 0, new Vector2(mapX, mapY)));
-                        room.transform.position = previousRoom.transform.position + new Vector3(0, 10.8f, 0);
-                        break;
-                    case 3:
-                        mapX += 1;
-                        index = UnityEngine.Random.Range(0, roomsDoorLeft.Count);
-                        room = Instantiate(roomsDoorLeft[index].GetComponent<Room>().generateWithRandomExit(false, 1, new Vector2(mapX, mapY)));
-                        room.transform.position = previousRoom.transform.position + new Vector3(19.25f, 0, 0);
-                        break;
+                    foreach(GameObject endRoom in secondaryRooms)
+                    {
+                        Room secondary = endRoom.GetComponent<Room>();
+                        if (previousRoom.primaryExit == 0 && secondary.possibleDoors().Contains(2))
+                        {
+                            mapY -= 1;
+                            room = Instantiate(secondary.generate(false, 2, new Vector2(mapX, mapY)));
+                            room.transform.position = previousRoom.transform.position + new Vector3(0, -10.8f, 0);
+                            break;
+                        }
+                        if (previousRoom.primaryExit == 2 && secondary.possibleDoors().Contains(0))
+                        {
+                            mapY += 1;
+                            room = Instantiate(secondary.generate(false, 0, new Vector2(mapX, mapY)));
+                            room.transform.position = previousRoom.transform.position + new Vector3(0, 10.8f, 0);
+                            break;
+                        }
+                        if (previousRoom.primaryExit == 1 && secondary.possibleDoors().Contains(3))
+                        {
+                            mapX += 1;
+                            room = Instantiate(secondary.generate(false, 1, new Vector2(mapX, mapY)));
+                            room.transform.position = previousRoom.transform.position + new Vector3(-19.25f, 0, 0);
+                            break;
+                        }
+                        if (previousRoom.primaryExit == 3 && secondary.possibleDoors().Contains(1))
+                        {
+                            mapX -= 1;
+                            room = Instantiate(secondary.generate(false, 3, new Vector2(mapX, mapY)));
+                            room.transform.position = previousRoom.transform.position + new Vector3(19.25f, 0, 0);
+                            break;
+                        }
+                    }
                 }
+                else
+                {
+                    switch (previousRoom.primaryExit)
+                    {
+                        case 0:
+                            mapY -= 1;
+                            index = UnityEngine.Random.Range(0, roomsDoorUp.Count);
+                            room = Instantiate(roomsDoorUp[index].GetComponent<Room>().generateWithRandomExit(false, 2, new Vector2(mapX, mapY)));
+                            room.transform.position = previousRoom.transform.position + new Vector3(0, -10.8f, 0);
+                            break;
+                        case 1:
+                            mapX -= 1;
+                            index = UnityEngine.Random.Range(0, roomsDoorRight.Count);
+                            room = Instantiate(roomsDoorRight[index].GetComponent<Room>().generateWithRandomExit(false, 3, new Vector2(mapX, mapY)));
+                            room.transform.position = previousRoom.transform.position + new Vector3(-19.25f, 0, 0);
+                            break;
+                        case 2:
+                            mapY += 1;
+                            index = UnityEngine.Random.Range(0, roomsDoorDown.Count);
+                            room = Instantiate(roomsDoorDown[index].GetComponent<Room>().generateWithRandomExit(false, 0, new Vector2(mapX, mapY)));
+                            room.transform.position = previousRoom.transform.position + new Vector3(0, 10.8f, 0);
+                            break;
+                        case 3:
+                            mapX += 1;
+                            index = UnityEngine.Random.Range(0, roomsDoorLeft.Count);
+                            room = Instantiate(roomsDoorLeft[index].GetComponent<Room>().generateWithRandomExit(false, 1, new Vector2(mapX, mapY)));
+                            room.transform.position = previousRoom.transform.position + new Vector3(19.25f, 0, 0);
+                            break;
+                    }
+                }
+                
 
                 if (map.getElement(mapX, mapY) == null)
                 {

@@ -70,4 +70,16 @@ public class Room : MonoBehaviour
 
         return doors;
     }
+
+    public GameObject generate(bool chest, int entrance, Vector2 location)
+    {
+        primaryEntrance = entrance;
+        this.location = location;
+
+        int exit = -1;
+
+        primaryExit = exit;
+
+        return this.gameObject;
+    }
 }
