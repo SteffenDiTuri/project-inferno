@@ -11,4 +11,10 @@ public class CrusadeButtonsBehaviour : MonoBehaviour
         SceneManager.LoadScene("DungeonStartScene");
     }
 
+    public void ReturnToHomeBaseButton(){
+        Debug.Log("You Successfully Went To Home Base!");
+
+        SceneManager.LoadScene("HomeBase");
+    }
+
 }
