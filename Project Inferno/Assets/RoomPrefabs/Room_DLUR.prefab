@@ -50,8 +50,9 @@ MonoBehaviour:
   roomsRight: 1
   roomsUp: 1
   roomsDown: 1
-  primaryExit: 2
-  primaryEntrance: 3
+  primaryExit: 1
+  primaryEntrance: 0
+  location: {x: 102, y: 85}
 --- !u!1 &4863059258938348828
 GameObject:
   m_ObjectHideFlags: 0

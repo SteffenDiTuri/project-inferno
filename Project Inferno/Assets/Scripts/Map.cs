@@ -9,10 +9,12 @@ public class Map : ScriptableObject
 
     public void createMap(int size)
     {
-        map = new GameObject[size * 2 + 1, size * 2 + 1];
-        for (int i = 0; i<size*2; i++)
+        int dimension = size * 2 + 1;
+        map = new GameObject[dimension, dimension];
+
+        for (int i = 0; i < dimension; i++)
         {
-            for (int j = 0; j < size * 2; j++)
+            for (int j = 0; j < dimension; j++)
             {
                 map[i, j] = null;
             }
@@ -21,25 +23,47 @@ public class Map : ScriptableObject
 
     public void setElement(int x, int y, GameObject obj)
     {
-        map[y, x] = obj;
-        roomSequence.Add(obj);
+        // Check bounds before setting the element
+        if (IsWithinBounds(x, y))
+        {
+            map[y, x] = obj;
+            roomSequence.Add(obj);
+        }
+        else
+        {
+            Debug.LogWarning("Attempted to set element out of bounds.");
+        }
     }
 
     public GameObject getElement(int x, int y)
     {
-        return map[y, x];
+        // Check bounds before getting the element
+        if (IsWithinBounds(x, y))
+        {
+            return map[y, x];
+        }
+        else
+        {
+            Debug.LogWarning("Attempted to get element out of bounds.");
+            return null;
+        }
     }
 
     public void cleanRoomSequence()
     {
-        GameObject[] newList = roomSequence.ToArray();
-        roomSequence = new List<GameObject>();
-        foreach (GameObject i in newList)
+        List<GameObject> newList = new List<GameObject>();
+        foreach (GameObject room in roomSequence)
         {
-            if (i)
+            if (room != null)
             {
-                roomSequence.Add(i);
+                newList.Add(room);
             }
         }
+        roomSequence = newList;
+    }
+
+    private bool IsWithinBounds(int x, int y)
+    {
+        return x >= 0 && x < map.GetLength(1) && y >= 0 && y < map.GetLength(0);
     }
 }

@@ -379,26 +379,34 @@ MonoBehaviour:
   isBossDungeon: 0
   roomsDoorLeft:
   - {fileID: 361894211801394156, guid: 82a7666a31915354998f81832b4f6283, type: 3}
-  - {fileID: 3665370604550834331, guid: b4d137b9b26d8c94891f8d8c7f6af16e, type: 3}
   - {fileID: 6810512882323728517, guid: 64b534c19b8387b4ab3a6b389ead2b1f, type: 3}
-  roomsDoorRight:
+  - {fileID: 8933428269683210804, guid: 5b97b2a4ef7ec7840865cee3614d266c, type: 3}
   - {fileID: 3665370604550834331, guid: b4d137b9b26d8c94891f8d8c7f6af16e, type: 3}
+  roomsDoorRight:
   - {fileID: 2270838235585710522, guid: 570739441524c3e43bd02d06e7033da3, type: 3}
   - {fileID: 1188052436506799276, guid: 386497093a32dff4793b10a679c2d737, type: 3}
-  roomsDoorUp:
+  - {fileID: 8933428269683210804, guid: 5b97b2a4ef7ec7840865cee3614d266c, type: 3}
   - {fileID: 3665370604550834331, guid: b4d137b9b26d8c94891f8d8c7f6af16e, type: 3}
+  roomsDoorUp:
   - {fileID: 87453445890967688, guid: d61c7ed360ffc9640a0ab711c8425080, type: 3}
   - {fileID: 6810512882323728517, guid: 64b534c19b8387b4ab3a6b389ead2b1f, type: 3}
   - {fileID: 1188052436506799276, guid: 386497093a32dff4793b10a679c2d737, type: 3}
-  roomsDoorDown:
   - {fileID: 3665370604550834331, guid: b4d137b9b26d8c94891f8d8c7f6af16e, type: 3}
+  roomsDoorDown:
   - {fileID: 361894211801394156, guid: 82a7666a31915354998f81832b4f6283, type: 3}
   - {fileID: 2270838235585710522, guid: 570739441524c3e43bd02d06e7033da3, type: 3}
   - {fileID: 87453445890967688, guid: d61c7ed360ffc9640a0ab711c8425080, type: 3}
-  secondaryRooms: []
-  FinalRoom: {fileID: 0}
+  - {fileID: 3665370604550834331, guid: b4d137b9b26d8c94891f8d8c7f6af16e, type: 3}
+  secondaryRooms:
+  - {fileID: 8933428269683210804, guid: b7b9a84319b78074c9456bb96db3a5b2, type: 3}
+  - {fileID: 628853330916800304, guid: 3d122a7ca60eeba438e70ceaac99527d, type: 3}
+  - {fileID: 7162077434371833347, guid: 80d05ea568b2ac240b1dda66b9515ab8, type: 3}
+  - {fileID: 2962480935095614692, guid: 61dc1671cb55cfa42bff035a457f3e2c, type: 3}
+  finalRoom: {fileID: 0}
   startRoom: {fileID: 1370204048}
   map: {fileID: 0}
+  mapX: 0
+  mapY: 0
 --- !u!4 &1788374199
 Transform:
   m_ObjectHideFlags: 0
