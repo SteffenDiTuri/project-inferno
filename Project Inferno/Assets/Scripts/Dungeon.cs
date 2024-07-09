@@ -25,7 +25,6 @@ public class Dungeon : MonoBehaviour
         printTotalRooms();
         replaceBadDoors();
         printTotalRooms();
-        addSecondaryRooms();
         printTotalRooms();
     }
 
@@ -248,121 +247,6 @@ public class Dungeon : MonoBehaviour
         map.setElement((int)newRoomScript.location.x, (int)newRoomScript.location.y, newRoomInstance);
         Destroy(oldRoom);
     }
-
-    public void addSecondaryRooms()
-    {
-        for (int i = 0; i < map.map.GetLength(0); i++)
-        {
-            for (int j = 0; j < map.map.GetLength(1); j++)
-            {
-                GameObject roomObject = map.map[i, j];
-                if (roomObject == null)
-                {
-                    List<int> directions = new List<int>();
-                    for (int direction = 0; direction < 4; direction++)
-                    {
-                        try
-                        {
-                            switch (direction)
-                            {
-                                case 0:
-                                    if (IsInBounds(i + 1, j) && map.map[i + 1, j] && map.map[i + 1, j].GetComponent<Room>().possibleDoors().Contains(2))
-                                    {
-                                        directions.Add(direction);
-                                    }
-                                    break;
-                                case 1:
-                                    if (IsInBounds(i, j - 1) && map.map[i, j - 1] && map.map[i, j - 1].GetComponent<Room>().possibleDoors().Contains(3))
-                                    {
-                                        directions.Add(direction);
-                                    }
-                                    break;
-                                case 2:
-                                    if (IsInBounds(i - 1, j) && map.map[i - 1, j] && map.map[i - 1, j].GetComponent<Room>().possibleDoors().Contains(0))
-                                    {
-                                        directions.Add(direction);
-                                    }
-                                    break;
-                                case 3:
-                                    if (IsInBounds(i, j + 1) && map.map[i, j + 1] && map.map[i, j + 1].GetComponent<Room>().possibleDoors().Contains(1))
-                                    {
-                                        directions.Add(direction);
-                                    }
-                                    break;
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-                    if (directions.Count > 0)
-                    {
-                        Debug.Log($"The amount of doors is: {directions.Count}");
-                        List<GameObject>[] roomLists = { secondaryRooms, roomsDoorDown, roomsDoorLeft, roomsDoorUp, roomsDoorRight };
-                        GameObject room = null;
-                        foreach (List<GameObject> roomList in roomLists)
-                        {
-                            foreach (GameObject possibleRoomObj in roomList)
-                            {
-                                Room possibleRoom = possibleRoomObj.GetComponent<Room>();
-                                List<int> possibleRoomDoors = possibleRoom.possibleDoors();
-                                Debug.Log($"The amount of possible doors is: {possibleRoomDoors.Count}");
-                                if (possibleRoomDoors.Count == directions.Count)
-                                {
-                                    possibleRoomDoors.Sort();
-                                    directions.Sort();
-                                    bool found = true;
-                                    for (int index = 0; index < directions.Count; index++)
-                                    {
-                                        Debug.Log(possibleRoomDoors[index]);
-                                        Debug.Log(directions[index]);
-                                        Debug.Log("");
-                                        if (possibleRoomDoors[index] != directions[index])
-                                        {
-                                            found = false;
-                                            break;
-                                        }
-                                    }
-                                    if (found)
-                                    {
-                                        room = possibleRoomObj;
-                                        break;
-                                    }
-                                }
-                            }
-                            if (room != null)
-                            {
-                                break;
-                            }
-                        }
-                        if (room != null)
-                        {
-                            spawnSecondaryRoom(room, i, j);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    void spawnSecondaryRoom(GameObject room, int i, int j)
-    {
-        GameObject roomInstance = Instantiate(room);
-        map.setElement(i, j, roomInstance);
-        roomInstance.GetComponent<Room>().location = new Vector2(i, j);
-
-        float centerX = (map.map.GetLength(1) - 1) / 2.0f;
-        float centerY = (map.map.GetLength(0) - 1) / 2.0f;
-
-        float xPosition = (j - centerX) * 19.25f;
-        float yPosition = (centerY - i) * 10.8f;
-
-        roomInstance.transform.position = new Vector2(xPosition, yPosition);
-        Debug.Log($"Spawned secondary room at index [{i}, {j}] with position: {roomInstance.transform.position}");
-    }
-
-
     bool IsInBounds(int i, int j)
     {
         return i >= 0 && i < map.map.GetLength(0) && j >= 0 && j < map.map.GetLength(1);

@@ -37,4 +37,29 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(direction * _speed * Time.deltaTime);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject camera = GameObject.Find("Main Camera");
+        if (collision.gameObject.tag.Equals("Up"))
+        {
+            player.gameObject.transform.Translate(new Vector3(0,3,0));
+            camera.transform.Translate(new Vector3(0, 10.8f, 0));
+        }
+        if (collision.gameObject.tag.Equals("Down"))
+        {
+            player.gameObject.transform.Translate(new Vector3(0, -3, 0));
+            camera.transform.Translate(new Vector3(0, -10.8f, 0));
+        }
+        if (collision.gameObject.tag.Equals("Left"))
+        {
+            player.gameObject.transform.Translate(new Vector3(-3, 0, 0));
+            camera.transform.Translate(new Vector3(-19.25f, 0, 0));
+        }
+        if (collision.gameObject.tag.Equals("Right"))
+        {
+            player.gameObject.transform.Translate(new Vector3(3, 0, 0));
+            camera.transform.Translate(new Vector3(19.25f, 0, 0));
+        }
+    }
 }
