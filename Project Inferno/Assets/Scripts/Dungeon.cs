@@ -25,7 +25,7 @@ public class Dungeon : MonoBehaviour
         printTotalRooms();
         replaceBadDoors();
         printTotalRooms();
-        //addSecondaryRooms();
+        addSecondaryRooms();
         printTotalRooms();
     }
 
