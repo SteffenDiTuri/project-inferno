@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Player player;
 
     // Distance the player must travel to trigger a potential encounter
-    private float encounterDistanceThreshold = 5.0f;
+    private float encounterDistanceThreshold = 1.0f;
     // Frequency of random encounters after the distance threshold (higher value = higher chance)
     private float encounterRate = 0.1f;
     private Vector3 lastPosition;
@@ -63,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 SetChildrenActive(battleEncounter, false); // Ensure it starts inactive
+
             }
         }
     }
@@ -116,6 +117,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 SetChildrenActive(battleEncounter, true);
             }
+            BattleSystem battleSystem = battleEncounter.GetComponentInChildren<BattleSystem>();
+            battleSystem.Begin();
         }
     }
     public void EndBattle()

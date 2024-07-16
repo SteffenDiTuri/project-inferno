@@ -21,7 +21,7 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
 
-    void Start()
+    public void Begin()
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
@@ -45,15 +45,10 @@ public class BattleSystem : MonoBehaviour
         }
 
         // place enemy (enemies) on wright place in scene
-        if (enemyBattleStation.childCount > 0){
-            GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation); // 1 enemy spawned at the moment
-            enemy = enemyGO.GetComponent<Enemy>();
-            enemy.ResetHP();
-        } else {
-            GameObject enemyGO = GameObject.Find("Enemy");
-            enemy = enemyGO.GetComponent<Enemy>();
-            enemy.ResetHP();
-        }
+        GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation); // 1 enemy spawned at the moment
+        enemy = enemyGO.GetComponent<Enemy>();
+        //enemy.ResetHP();
+
 
         dialogueText.text = "commence the battle!";
 
@@ -139,14 +134,14 @@ public class BattleSystem : MonoBehaviour
         if (playerGO != null)
         {
             PlayerMovement playerMovement = playerGO.GetComponent<PlayerMovement>();
-            //FindEnemy();
+            FindEnemy();
             playerMovement.EndBattle();
             player.SetCombatState(false);
         }
     }
 
     void FindEnemy(){
-        GameObject enemyGO = GameObject.Find("Enemy");
+        GameObject enemyGO = GameObject.FindGameObjectWithTag("Enemy");
         if (enemyGO == null)
         {
             Debug.LogError("Enemy GameObject not found! Make sure it is named 'Enemy'.");
