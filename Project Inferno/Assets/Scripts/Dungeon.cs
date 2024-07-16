@@ -19,12 +19,13 @@ public class Dungeon : MonoBehaviour
     public int mapX;
     public int mapY;
 
-    void Start()
+    void Awake()
     {
         generateRooms(10, startRoom);
         //printTotalRooms();
         replaceBadDoors();
         //printTotalRooms();
+        setPortalRooms(2);
     }
 
     void printTotalRooms()
@@ -87,14 +88,14 @@ public class Dungeon : MonoBehaviour
                         }
                         if (previousRoom.primaryExit == 1 && secondary.possibleDoors().Contains(3))
                         {
-                            mapX += 1;
+                            mapX -= 1;
                             room = Instantiate(secondary.generate(false, 1, new Vector2(mapX, mapY)));
                             room.transform.position = previousRoom.transform.position + new Vector3(-19.25f, 0, 0);
                             break;
                         }
                         if (previousRoom.primaryExit == 3 && secondary.possibleDoors().Contains(1))
                         {
-                            mapX -= 1;
+                            mapX += 1;
                             room = Instantiate(secondary.generate(false, 3, new Vector2(mapX, mapY)));
                             room.transform.position = previousRoom.transform.position + new Vector3(19.25f, 0, 0);
                             break;
@@ -282,11 +283,29 @@ public class Dungeon : MonoBehaviour
         newRoomScript.location = oldRoomScript.location;
         newRoomScript.primaryEntrance = oldRoomScript.primaryEntrance;
         newRoomScript.primaryExit = oldRoomScript.primaryExit;
+        newRoomScript.portalToRoom = oldRoomScript.portalToRoom;
         map.setElement((int)newRoomScript.location.x, (int)newRoomScript.location.y, newRoomInstance);
         Destroy(oldRoom);
     }
     bool IsInBounds(int i, int j)
     {
         return i >= 0 && i < map.map.GetLength(0) && j >= 0 && j < map.map.GetLength(1);
+    }
+
+    public void setPortalRooms(int amount)
+    {
+        int total = 0;
+        while (total < amount)
+        {
+            int index = UnityEngine.Random.Range(1, map.roomSequence.Count - 2);
+            Room room = map.roomSequence[index].GetComponent<Room>();
+            while (room.portalToRoom)
+            {
+                index = UnityEngine.Random.Range(1, map.roomSequence.Count - 2);
+                room = map.roomSequence[index].GetComponent<Room>();
+            }
+            room.portalToRoom = true;
+            total++;
+        }
     }
 }

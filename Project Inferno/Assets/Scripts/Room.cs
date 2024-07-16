@@ -10,6 +10,7 @@ public class Room : MonoBehaviour
     public bool roomsDown;
     public int primaryExit;
     public int primaryEntrance;
+    public bool portalToRoom;
 
     public Vector2 location;
 
@@ -32,6 +33,7 @@ public class Room : MonoBehaviour
 
         primaryEntrance = entrance;
         this.location = location;
+        portalToRoom = false;
 
         int exit = Random.Range(0, 4);
         List<int> doors = possibleDoors();
@@ -73,6 +75,7 @@ public class Room : MonoBehaviour
 
     public GameObject generate(bool chest, int entrance, Vector2 location)
     {
+        portalToRoom = false;
         primaryEntrance = entrance;
         this.location = location;
 
