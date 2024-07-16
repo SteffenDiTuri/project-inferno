@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -44,8 +45,15 @@ public class BattleSystem : MonoBehaviour
         }
 
         // place enemy (enemies) on wright place in scene
-        GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation); // 1 enemy spawned at the moment
-        enemy = enemyGO.GetComponent<Enemy>();
+        if (enemyBattleStation.GetChildCount() > 0){
+            GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation); // 1 enemy spawned at the moment
+            enemy = enemyGO.GetComponent<Enemy>();
+            enemy.ResetHP();
+        } else {
+            GameObject enemyGO = GameObject.Find("Enemy");
+            enemy = enemyGO.GetComponent<Enemy>();
+            enemy.ResetHP();
+        }
 
         dialogueText.text = "commence the battle!";
 
@@ -72,7 +80,7 @@ public class BattleSystem : MonoBehaviour
         if (isDead){
             // end battle
             state = BattleState.WON;
-            EndBattle();
+            StartCoroutine(EndBattle());
         }
         else {
             // enemy turn
@@ -97,7 +105,7 @@ public class BattleSystem : MonoBehaviour
 
         if (isDead){
             state = BattleState.LOST;
-            EndBattle();
+            StartCoroutine(EndBattle());
         }
         else {
             state = BattleState.PLAYERTURN;
@@ -105,13 +113,49 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    void EndBattle(){
+    // IEnumerator EndBattle(){
+    //     if (state == BattleState.WON){
+    //         dialogueText.text = "You slayed them all!";
+    //     }
+    //     else if (state == BattleState.LOST){
+    //         dialogueText.text = "You are dead.";
+    //     }
+    //     yield return new WaitForSeconds(2f);
+    //     SceneManager.LoadScene("DungeonStartScene");
+    // }
+
+    IEnumerator EndBattle(){
         if (state == BattleState.WON){
             dialogueText.text = "You slayed them all!";
         }
         else if (state == BattleState.LOST){
             dialogueText.text = "You are dead.";
         }
+        //FindEnemy();
+        yield return new WaitForSeconds(2f);
+        
+        // Instead of loading a new scene, call the EndBattle method in PlayerMovement
+        GameObject playerGO = GameObject.Find("Player");
+        if (playerGO != null)
+        {
+            PlayerMovement playerMovement = playerGO.GetComponent<PlayerMovement>();
+            //FindEnemy();
+            playerMovement.EndBattle();
+            player.SetCombatState(false);
+        }
+    }
+
+    void FindEnemy(){
+        GameObject enemyGO = GameObject.Find("Enemy");
+        if (enemyGO == null)
+        {
+            Debug.LogError("Enemy GameObject not found! Make sure it is named 'Enemy'.");
+        }
+        else
+        {
+            Destroy(enemyGO);
+        }
+
     }
 
     void PlayerTurn(){

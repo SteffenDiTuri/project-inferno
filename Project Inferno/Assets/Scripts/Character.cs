@@ -29,4 +29,8 @@ public class Character : MonoBehaviour
             currentHP = maxHP;
         }
     }
+
+    public void ResetHP(){
+        currentHP = maxHP;
+    }
 }

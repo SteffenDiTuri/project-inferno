@@ -6,16 +6,27 @@ public class Player : Character
 {
     public int MP;
     public int SP;
-    private bool inCombat;
+    public bool inCombat;
+    public bool inDungeon;
 
     public bool IsInCombat()
     {
         return inCombat;
     }
 
+    public bool IsInDungeon()
+    {
+        return inDungeon;
+    }
+
     public void SetCombatState(bool state)
     {
         inCombat = state;
+    }
+
+    public void SetDungeonState(bool state)
+    {
+        inDungeon = state;
     }
 
     // save and load

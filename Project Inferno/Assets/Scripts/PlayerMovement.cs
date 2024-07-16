@@ -1,12 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 5.0f;
-    private Player player; // Change to Player type
+    private Player player;
+
+    // Distance the player must travel to trigger a potential encounter
+    private float encounterDistanceThreshold = 5.0f;
+    // Frequency of random encounters after the distance threshold (higher value = higher chance)
+    private float encounterRate = 0.1f;
+    private Vector3 lastPosition;
+    private float distanceTraveled;
+
+    // Reference to the main camera
+    private Camera mainCamera;
+    // Position to move the camera to during the battle encounter
+    private Vector3 battleCameraPosition = new Vector3(1.5f, -71.6f, -10f); // Adjust the z-axis if needed
+    private Vector3 originalCameraPosition;
+
+    // Reference to the battle encounter GameObject
+    private GameObject battleEncounter;
 
     void Start() {
         GameObject playerGameObject = GameObject.Find("Player");
@@ -22,6 +39,32 @@ public class PlayerMovement : MonoBehaviour
                 Debug.LogError("Player component not found on the Player GameObject.");
             }
         }
+
+        // Initialize last position to the player's starting position
+        lastPosition = transform.position;
+        distanceTraveled = 0.0f;
+
+        // Check if the current scene is "DungeonStartScene"
+        if (SceneManager.GetActiveScene().name == "DungeonStartScene")
+        {
+            // Find the main camera
+            mainCamera = Camera.main;
+            if (mainCamera == null)
+            {
+                Debug.LogError("Main Camera not found! Make sure there is a camera tagged 'MainCamera'.");
+            }
+
+            // Find the battle encounter GameObject
+            battleEncounter = GameObject.Find("CombatEncounter");
+            if (battleEncounter == null)
+            {
+                Debug.LogError("CombatEncounter GameObject not found! Make sure it is named 'CombatEncounter'.");
+            }
+            else
+            {
+                SetChildrenActive(battleEncounter, false); // Ensure it starts inactive
+            }
+        }
     }
 
     // Update is called once per frame
@@ -35,6 +78,66 @@ public class PlayerMovement : MonoBehaviour
             Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
 
             transform.Translate(direction * _speed * Time.deltaTime);
+
+            // Update the distance traveled
+            distanceTraveled += Vector3.Distance(transform.position, lastPosition);
+            lastPosition = transform.position;
+
+            // Check if the player has traveled the required distance
+            if (player.IsInDungeon() && distanceTraveled >= encounterDistanceThreshold)
+            {
+                distanceTraveled = 0.0f; // Reset distance traveled
+                if (Random.value < encounterRate)
+                {
+                    TriggerBattleEncounter();
+                }
+            }
+        }
+    }
+
+    private void TriggerBattleEncounter()
+    {
+        if (SceneManager.GetActiveScene().name == "DungeonStartScene")
+        {
+            // Store the original camera position
+            if (mainCamera != null)
+            {
+                originalCameraPosition = mainCamera.transform.position;
+            }
+
+            // Change location of the camera
+            if (mainCamera != null)
+            {
+                mainCamera.transform.position = battleCameraPosition;
+            }
+
+            // Set the BattleEncounter GameObject's children to active state
+            if (battleEncounter != null)
+            {
+                SetChildrenActive(battleEncounter, true);
+            }
+        }
+    }
+    public void EndBattle()
+    {
+        // Change location of the camera back to the original position
+        if (mainCamera != null)
+        {
+            mainCamera.transform.position = originalCameraPosition;
+        }
+
+        // Set the BattleEncounter GameObject's children to inactive state
+        if (battleEncounter != null)
+        {
+            SetChildrenActive(battleEncounter, false);
+        }
+    }
+
+    private void SetChildrenActive(GameObject parent, bool state)
+    {
+        foreach (Transform child in parent.transform)
+        {
+            child.gameObject.SetActive(state);
         }
     }
 
@@ -43,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject camera = GameObject.Find("Main Camera");
         if (collision.gameObject.tag.Equals("Up"))
         {
-            player.gameObject.transform.Translate(new Vector3(0,3,0));
+            player.gameObject.transform.Translate(new Vector3(0, 3, 0));
             camera.transform.Translate(new Vector3(0, 10.8f, 0));
         }
         if (collision.gameObject.tag.Equals("Down"))

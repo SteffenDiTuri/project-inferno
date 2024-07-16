@@ -960,6 +960,7 @@ GameObject:
   - component: {fileID: 7586764312722149082}
   - component: {fileID: 3593587321216221466}
   - component: {fileID: 2581492976755771473}
+  - component: {fileID: 7366535414554588955}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1088,6 +1089,8 @@ MonoBehaviour:
   currentHP: 20
   MP: 0
   SP: 0
+  inCombat: 0
+  inDungeon: 0
 --- !u!114 &2581492976755771473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1101,6 +1104,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveCanvas: {fileID: 8041289162293890741}
+--- !u!114 &7366535414554588955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5297469815742611705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5445de603e42d6244bc4346a8d99f66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5604657137963234187
 GameObject:
   m_ObjectHideFlags: 0
