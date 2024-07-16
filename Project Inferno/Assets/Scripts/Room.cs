@@ -11,13 +11,17 @@ public class Room : MonoBehaviour
     public int primaryExit;
     public int primaryEntrance;
     public bool portalToRoom;
+    public GameObject portal;
 
     public Vector2 location;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (portal)
+        {
+            portal.SetActive(portalToRoom);
+        }
     }
 
     // Update is called once per frame

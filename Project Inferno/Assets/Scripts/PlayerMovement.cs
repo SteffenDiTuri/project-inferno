@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Player player;
 
     // Distance the player must travel to trigger a potential encounter
-    private float encounterDistanceThreshold = 1.0f;
+    private float encounterDistanceThreshold = 5.0f;
     // Frequency of random encounters after the distance threshold (higher value = higher chance)
     private float encounterRate = 0.1f;
     private Vector3 lastPosition;
@@ -20,7 +20,9 @@ public class PlayerMovement : MonoBehaviour
     private Camera mainCamera;
     // Position to move the camera to during the battle encounter
     private Vector3 battleCameraPosition = new Vector3(1.5f, -71.6f, -10f); // Adjust the z-axis if needed
+    private Vector3 secondairyRoomCameraPosition = new Vector3(0, -200f, -10f); // Adjust the z-axis if needed
     private Vector3 originalCameraPosition;
+    private Vector3 originalPlayerPosition;
 
     // Reference to the battle encounter GameObject
     private GameObject battleEncounter;
@@ -166,6 +168,49 @@ public class PlayerMovement : MonoBehaviour
         {
             player.gameObject.transform.Translate(new Vector3(3, 0, 0));
             camera.transform.Translate(new Vector3(19.25f, 0, 0));
+        }
+        if(collision.gameObject.name.Equals("Portal"))
+        {
+            collision.gameObject.SetActive(false);
+            GoToSecondairyRoom();
+        }
+        if (collision.gameObject.name.Equals("Portal_Back"))
+        {
+            GoToPrimaryRoom();
+        }
+    }
+
+    private void GoToSecondairyRoom()
+    {
+        if (SceneManager.GetActiveScene().name == "DungeonStartScene")
+        {
+            // Store the original camera position
+            if (mainCamera != null)
+            {
+                originalCameraPosition = mainCamera.transform.position;
+            }
+
+            // Change location of the camera
+            if (mainCamera != null)
+            {
+                mainCamera.transform.position = secondairyRoomCameraPosition;
+            }
+            player.SetDungeonState(false);
+            originalPlayerPosition = player.gameObject.transform.position;
+            player.gameObject.transform.position = new Vector3(0, -202, 0);
+        }
+    }
+
+    private void GoToPrimaryRoom()
+    {
+        if (SceneManager.GetActiveScene().name == "DungeonStartScene")
+        {
+            if (mainCamera != null)
+            {
+                mainCamera.transform.position = originalCameraPosition;
+            }
+            player.SetDungeonState(true);
+            player.gameObject.transform.position = originalPlayerPosition;
         }
     }
 }
