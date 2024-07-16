@@ -45,7 +45,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         // place enemy (enemies) on wright place in scene
-        if (enemyBattleStation.GetChildCount() > 0){
+        if (enemyBattleStation.childCount > 0){
             GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation); // 1 enemy spawned at the moment
             enemy = enemyGO.GetComponent<Enemy>();
             enemy.ResetHP();
