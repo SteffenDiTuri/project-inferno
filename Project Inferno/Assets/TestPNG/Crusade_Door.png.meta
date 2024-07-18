@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ff016178b31358841a5a5c270f9c013b
+guid: 5792f208c07152649bda24e965508a66
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,49 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Crusade_Door_0
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 36
+        width: 1578
+        height: 2124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f34f2b983d82b3e438480f8cde498582
+      internalID: -84129174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crusade_Door_1
+      rect:
+        serializedVersion: 2
+        x: 1755
+        y: 0
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c7d7a4b762d7c418c276b5bd009358
+      internalID: -1312978410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +161,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Crusade_Door_0: -84129174
+      Crusade_Door_1: -1312978410
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
