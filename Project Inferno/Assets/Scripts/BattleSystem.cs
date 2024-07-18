@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, SURRENDERED }
 
 public class BattleSystem : MonoBehaviour
 {
@@ -50,7 +50,7 @@ public class BattleSystem : MonoBehaviour
         //enemy.ResetHP();
 
 
-        dialogueText.text = "commence the battle!";
+        dialogueText.text = "Commence the Battle!";
 
         playerHUD.SetHUD(player);
         enemyHUD.SetHUD(enemy);
@@ -126,6 +126,9 @@ public class BattleSystem : MonoBehaviour
         else if (state == BattleState.LOST){
             dialogueText.text = "You are dead.";
         }
+        else if (state == BattleState.SURRENDERED){
+            dialogueText.text = "you cowered away.";
+        }
         //FindEnemy();
         yield return new WaitForSeconds(2f);
         
@@ -183,5 +186,13 @@ public class BattleSystem : MonoBehaviour
         }
 
         StartCoroutine(PlayerHeal());
+    }
+
+    public void OnSurrenderButton(){
+        if (state != BattleState.PLAYERTURN){
+            return;
+        }
+        state = BattleState.SURRENDERED;
+        StartCoroutine(EndBattle());
     }
 }
