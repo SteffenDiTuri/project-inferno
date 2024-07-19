@@ -3226,8 +3226,19 @@ MonoBehaviour:
   currentSP: 25
   maxMP: 25
   currentMP: 25
+  inventory:
+  - {fileID: 8558387361096774693, guid: dbcf9764e0b8e134697c236b0bc689ee, type: 3}
+  allItems: []
   inCombat: 0
   inDungeon: 0
+  goldenSpoonsAmount: 0
+  redCoinsAmount: 0
+  obsidianAmount: 0
+  coalAmount: 0
+  metalAmount: 0
+  HPPotionAmount: 0
+  MPPotionAmount: 0
+  SPPotionAmount: 0
 --- !u!114 &2581492976755771473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5547,6 +5558,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7611003602429851185}
+  - component: {fileID: 8096196401659009843}
   m_Layer: 0
   m_Name: InventoryUI
   m_TagString: Untagged
@@ -5574,6 +5586,26 @@ Transform:
   - {fileID: 4168442801215676621}
   m_Father: {fileID: 1579336146580114111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8096196401659009843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8029122773121956317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055247319c6130a4aa147f87425dc677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldenSpoon: {fileID: 6528587292249279590}
+  redCoins: {fileID: 178032683527531746}
+  obsidian: {fileID: 6821615275926482835}
+  coal: {fileID: 6468533540660324716}
+  metal: {fileID: 7530289252007223269}
+  HPPotion: {fileID: 1667815874907458245}
+  MPPotion: {fileID: 5550557320778348707}
+  SPPotion: {fileID: 5057441653923796089}
 --- !u!1 &8041289162293890741
 GameObject:
   m_ObjectHideFlags: 0
@@ -5587,7 +5619,7 @@ GameObject:
   - component: {fileID: 6628838679455311386}
   - component: {fileID: 2976565174549566446}
   m_Layer: 0
-  m_Name: Save System Canvas
+  m_Name: SaveSystemCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

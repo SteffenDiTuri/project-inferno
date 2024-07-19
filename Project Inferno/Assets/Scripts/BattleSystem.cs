@@ -24,6 +24,8 @@ public class BattleSystem : MonoBehaviour
     public GameObject deathScreen;
     public GameObject victoryScreen;
 
+    public GameObject lootItem;
+
     public void Begin()
     {
         state = BattleState.START;
@@ -53,7 +55,7 @@ public class BattleSystem : MonoBehaviour
         GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation); // 1 enemy spawned at the moment
         enemy = enemyGO.GetComponent<Enemy>();
         //enemy.ResetHP();
-
+        enemy.generateInventory();
 
         dialogueText.text = "commence the battle!";
 
@@ -122,6 +124,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "you slayed them all!";
             yield return new WaitForSeconds(3f);
             victoryScreen.SetActive(true);
+            showLoot();
         }
         else if (state == BattleState.LOST){
             dialogueText.text = "you are dead.";
@@ -250,6 +253,37 @@ public class BattleSystem : MonoBehaviour
     // victory screen methods
     public void ClaimSpoils(){
         // give player rewards
+        foreach(Item item in enemy.inventory)
+        {
+            switch(item.itemName)
+            {
+                case "Golden Spoon":
+                    player.goldenSpoonsAmount += item.amount;
+                    break;
+                case "Red Coins":
+                    player.redCoinsAmount += item.amount;
+                    break;
+                case "Obsidian":
+                    player.obsidianAmount += item.amount;
+                    break;
+                case "Coal":
+                    player.coalAmount += item.amount;
+                    break;
+                case "Metal":
+                    player.metalAmount += item.amount;
+                    break;
+                case "HP Potion":
+                    player.HPPotionAmount += item.amount;
+                    break;
+                case "MP Potion":
+                    player.MPPotionAmount += item.amount;
+                    break;
+                case "SP Potion":
+                    player.SPPotionAmount += item.amount;
+                    break;
+            }
+            Destroy(item);
+        }
 
         // Instead of loading a new scene, call the EndBattle method in PlayerMovement
             GameObject playerGO = GameObject.Find("Player");
@@ -260,5 +294,18 @@ public class BattleSystem : MonoBehaviour
                 playerMovement.EndBattle();
                 player.SetCombatState(false);
             }
+    }
+
+    public void showLoot()
+    {
+        float y = 0;
+        foreach (Item item in enemy.inventory)
+        {
+            GameObject itemInstance = Instantiate(lootItem, victoryScreen.transform.Find("StartCrusadeElement").Find("Image").Find("Loot"));
+            itemInstance.transform.position = itemInstance.transform.position + new Vector3(0, y, 0);
+            itemInstance.GetComponentInChildren<Image>().sprite = item.sprite.GetComponent<SpriteRenderer>().sprite;
+            itemInstance.GetComponentInChildren<TextMeshProUGUI>().text = item.itemName + " " + item.amount.ToString();
+            y -= 45;
+        }
     }
 }

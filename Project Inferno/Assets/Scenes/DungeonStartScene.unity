@@ -3290,6 +3290,7 @@ MonoBehaviour:
   state: 0
   deathScreen: {fileID: 1024450823}
   victoryScreen: {fileID: 2005594914}
+  lootItem: {fileID: 357035385389818336, guid: 62bae128a5a57b64a996797079e7a44a, type: 3}
 --- !u!4 &1087792182
 Transform:
   m_ObjectHideFlags: 0
@@ -3514,10 +3515,6 @@ PrefabInstance:
     - target: {fileID: 3593587321216221466, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
       propertyPath: currentHP
       value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593587321216221466, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
-      propertyPath: inDungeon
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4911183027159904457, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
       propertyPath: m_LocalPosition.x

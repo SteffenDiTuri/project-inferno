@@ -7,6 +7,15 @@ public class Player : Character
     public bool inCombat;
     public bool inDungeon;
 
+    public int goldenSpoonsAmount;
+    public int redCoinsAmount;
+    public int obsidianAmount;
+    public int coalAmount;
+    public int metalAmount;
+    public int HPPotionAmount;
+    public int MPPotionAmount;
+    public int SPPotionAmount;
+
     public bool IsInCombat()
     {
         return inCombat;

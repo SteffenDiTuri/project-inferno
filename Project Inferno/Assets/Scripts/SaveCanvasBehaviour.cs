@@ -29,7 +29,17 @@ public class SaveCanvasBehaviour : MonoBehaviour
             {
                 saveCanvas.SetActive(!saveCanvas.activeSelf);
                 // Debug.Log("Escape Key Pressed, Toggling Canvas");
+                updatePlayerUI();
             }
+        }
+    }
+
+    public void updatePlayerUI()
+    {
+        InventoryUI UI = this.transform.Find("SaveSystemCanvas").Find("InventoryUI").GetComponent<InventoryUI>(); ;
+        if (UI)
+        {
+            UI.updateInventoryUI();
         }
     }
 }

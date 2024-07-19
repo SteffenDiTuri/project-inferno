@@ -15,6 +15,9 @@ public class Character : MonoBehaviour
     public int currentSP;
     public int maxMP;
     public int currentMP;
+
+    public List<Item> inventory;
+    public List<Item> allItems;
     
     public bool TakeDamage(int dmg){
         currentHP -= dmg;
