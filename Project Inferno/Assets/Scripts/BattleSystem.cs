@@ -22,12 +22,14 @@ public class BattleSystem : MonoBehaviour
     public BattleState state;
 
     public GameObject deathScreen;
+    public GameObject victoryScreen;
 
     public void Begin()
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
         deathScreen.SetActive(false);
+        victoryScreen.SetActive(false);
     }
 
     IEnumerator SetupBattle() {
@@ -114,20 +116,12 @@ public class BattleSystem : MonoBehaviour
             PlayerTurn();
         }
     }
-
+    
     IEnumerator EndBattle(){
         if (state == BattleState.WON){
             dialogueText.text = "You slayed them all!";
-            yield return new WaitForSeconds(2f);
-            // Instead of loading a new scene, call the EndBattle method in PlayerMovement
-            GameObject playerGO = GameObject.Find("Player");
-            if (playerGO != null)
-            {
-                PlayerMovement playerMovement = playerGO.GetComponent<PlayerMovement>();
-                FindEnemy();
-                playerMovement.EndBattle();
-                player.SetCombatState(false);
-            }
+            yield return new WaitForSeconds(3f);
+            victoryScreen.SetActive(true);
         }
         else if (state == BattleState.LOST){
             dialogueText.text = "You are dead.";
@@ -251,5 +245,20 @@ public class BattleSystem : MonoBehaviour
     public void ReturnToHomeBaseButton(){
 
         SceneManager.LoadScene("HomeBase");
+    }
+
+    // victory screen methods
+    public void ClaimSpoils(){
+        // give player rewards
+
+        // Instead of loading a new scene, call the EndBattle method in PlayerMovement
+            GameObject playerGO = GameObject.Find("Player");
+            if (playerGO != null)
+            {
+                PlayerMovement playerMovement = playerGO.GetComponent<PlayerMovement>();
+                FindEnemy();
+                playerMovement.EndBattle();
+                player.SetCombatState(false);
+            }
     }
 }

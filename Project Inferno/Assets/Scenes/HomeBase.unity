@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_text
       value: VIII
       objectReference: {fileID: 0}
+    - target: {fileID: 8125113996307613565, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
     - target: {fileID: 9201766417301017318, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -267,6 +271,10 @@ PrefabInstance:
     - target: {fileID: 2652827497424376654, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_text
       value: VI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125113996307613565, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 9201766417301017318, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_Pivot.x
@@ -515,6 +523,10 @@ PrefabInstance:
     - target: {fileID: 2652827497424376654, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_text
       value: III
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125113996307613565, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 9201766417301017318, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_Pivot.x
@@ -767,6 +779,10 @@ PrefabInstance:
     - target: {fileID: 2652827497424376654, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_text
       value: IX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125113996307613565, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 9201766417301017318, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_Pivot.x
@@ -1248,6 +1264,10 @@ PrefabInstance:
       propertyPath: m_text
       value: II
       objectReference: {fileID: 0}
+    - target: {fileID: 8125113996307613565, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
     - target: {fileID: 9201766417301017318, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1365,6 +1385,10 @@ PrefabInstance:
     - target: {fileID: 2652827497424376654, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_text
       value: IV
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125113996307613565, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 9201766417301017318, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_Pivot.x
@@ -1621,6 +1645,10 @@ PrefabInstance:
       propertyPath: m_text
       value: VII
       objectReference: {fileID: 0}
+    - target: {fileID: 8125113996307613565, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
     - target: {fileID: 9201766417301017318, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1754,6 +1782,10 @@ PrefabInstance:
     - target: {fileID: 2652827497424376654, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_text
       value: V
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125113996307613565, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 9201766417301017318, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_Pivot.x
@@ -2264,6 +2296,10 @@ PrefabInstance:
     - target: {fileID: 6899640263377255747, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125113996307613565, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9201766417301017318, guid: 9a397f6ce7c07c04d891976a98fa37c9, type: 3}
       propertyPath: m_Pivot.x
