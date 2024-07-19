@@ -55,7 +55,7 @@ public class BattleSystem : MonoBehaviour
         //enemy.ResetHP();
 
 
-        dialogueText.text = "Commence the Battle!";
+        dialogueText.text = "commence the battle!";
 
         playerHUD.SetHUD(player);
         enemyHUD.SetHUD(enemy);
@@ -74,7 +74,7 @@ public class BattleSystem : MonoBehaviour
         // enemyHUD.SetHP(enemy.currentHP);
         playerHUD.SetHUD(player);
         enemyHUD.SetHUD(enemy);
-        dialogueText.text = "The attack is successful!";
+        dialogueText.text = "the attack is successful!";
 
         yield return new WaitForSeconds(2f);
 
@@ -119,12 +119,12 @@ public class BattleSystem : MonoBehaviour
     
     IEnumerator EndBattle(){
         if (state == BattleState.WON){
-            dialogueText.text = "You slayed them all!";
+            dialogueText.text = "you slayed them all!";
             yield return new WaitForSeconds(3f);
             victoryScreen.SetActive(true);
         }
         else if (state == BattleState.LOST){
-            dialogueText.text = "You are dead.";
+            dialogueText.text = "you are dead.";
             yield return new WaitForSeconds(3f);
             deathScreen.SetActive(true);
         }
@@ -164,7 +164,7 @@ public class BattleSystem : MonoBehaviour
         player.RestoreHP(10);
         playerHUD.SetHUD(player);
 
-        dialogueText.text = "The gods lend you some vitality!";
+        dialogueText.text = "the gods lend you some vitality!";
         
         yield return new WaitForSeconds(3f);
 
@@ -176,7 +176,7 @@ public class BattleSystem : MonoBehaviour
         player.RestoreSP(10);
         playerHUD.SetHUD(player);
 
-        dialogueText.text = "The gods lend you some endurance!";
+        dialogueText.text = "the gods lend you some endurance!";
         
         yield return new WaitForSeconds(3f);
 
@@ -188,7 +188,7 @@ public class BattleSystem : MonoBehaviour
         player.RestoreMP(10);
         playerHUD.SetHUD(player);
 
-        dialogueText.text = "The gods lend you some spirit!";
+        dialogueText.text = "the gods lend you some spirit!";
         
         yield return new WaitForSeconds(3f);
 
