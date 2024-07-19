@@ -10,7 +10,6 @@ public class CrusadeButtonsBehaviour : MonoBehaviour
     
     public void Start(){
         CrusadeConfirmationScreen.SetActive(false);
-        //CrusadeSelectionScreen.SetActive(false);
     }
 
     public void ShowConfirmationScreenCanvas(){
