@@ -21,10 +21,13 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
 
+    public GameObject deathScreen;
+
     public void Begin()
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
+        deathScreen.SetActive(false);
     }
 
     IEnumerator SetupBattle() {
@@ -108,38 +111,37 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    // IEnumerator EndBattle(){
-    //     if (state == BattleState.WON){
-    //         dialogueText.text = "You slayed them all!";
-    //     }
-    //     else if (state == BattleState.LOST){
-    //         dialogueText.text = "You are dead.";
-    //     }
-    //     yield return new WaitForSeconds(2f);
-    //     SceneManager.LoadScene("DungeonStartScene");
-    // }
-
     IEnumerator EndBattle(){
         if (state == BattleState.WON){
             dialogueText.text = "You slayed them all!";
+            yield return new WaitForSeconds(2f);
+            // Instead of loading a new scene, call the EndBattle method in PlayerMovement
+            GameObject playerGO = GameObject.Find("Player");
+            if (playerGO != null)
+            {
+                PlayerMovement playerMovement = playerGO.GetComponent<PlayerMovement>();
+                FindEnemy();
+                playerMovement.EndBattle();
+                player.SetCombatState(false);
+            }
         }
         else if (state == BattleState.LOST){
             dialogueText.text = "You are dead.";
+            yield return new WaitForSeconds(3f);
+            deathScreen.SetActive(true);
         }
         else if (state == BattleState.SURRENDERED){
             dialogueText.text = "you cowered away.";
-        }
-        //FindEnemy();
-        yield return new WaitForSeconds(2f);
-        
-        // Instead of loading a new scene, call the EndBattle method in PlayerMovement
-        GameObject playerGO = GameObject.Find("Player");
-        if (playerGO != null)
-        {
-            PlayerMovement playerMovement = playerGO.GetComponent<PlayerMovement>();
-            FindEnemy();
-            playerMovement.EndBattle();
-            player.SetCombatState(false);
+            yield return new WaitForSeconds(2f);
+            // Instead of loading a new scene, call the EndBattle method in PlayerMovement
+            GameObject playerGO = GameObject.Find("Player");
+            if (playerGO != null)
+            {
+                PlayerMovement playerMovement = playerGO.GetComponent<PlayerMovement>();
+                FindEnemy();
+                playerMovement.EndBattle();
+                player.SetCombatState(false);
+            }
         }
     }
 
@@ -160,13 +162,37 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = player.characterName + ", choose your action...";
     }
 
-    IEnumerator PlayerHeal(){
-        player.Heal(10);
+    IEnumerator PlayerRestoreHP(){
+        player.RestoreHP(10);
         playerHUD.SetHUD(player);
 
         dialogueText.text = "The gods lend you some vitality!";
         
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
+
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(EnemyTurn());
+    }
+
+    IEnumerator PlayerRestoreSP(){
+        player.RestoreSP(10);
+        playerHUD.SetHUD(player);
+
+        dialogueText.text = "The gods lend you some endurance!";
+        
+        yield return new WaitForSeconds(3f);
+
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(EnemyTurn());
+    }
+
+    IEnumerator PlayerRestoreMP(){
+        player.RestoreMP(10);
+        playerHUD.SetHUD(player);
+
+        dialogueText.text = "The gods lend you some spirit!";
+        
+        yield return new WaitForSeconds(3f);
 
         state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());
@@ -180,12 +206,28 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerAttack());
     }
 
-    public void OnHealButton(){
+    public void OnRestoreHPButton(){
         if (state != BattleState.PLAYERTURN){
             return;
         }
 
-        StartCoroutine(PlayerHeal());
+        StartCoroutine(PlayerRestoreHP());
+    }
+
+    public void OnRestoreSPButton(){
+        if (state != BattleState.PLAYERTURN){
+            return;
+        }
+
+        StartCoroutine(PlayerRestoreSP());
+    }
+
+    public void OnRestoreMPButton(){
+        if (state != BattleState.PLAYERTURN){
+            return;
+        }
+
+        StartCoroutine(PlayerRestoreMP());
     }
 
     public void OnSurrenderButton(){
@@ -194,5 +236,16 @@ public class BattleSystem : MonoBehaviour
         }
         state = BattleState.SURRENDERED;
         StartCoroutine(EndBattle());
+    }
+
+    // game over screen methods
+    public void RestartCrusadeButton(){
+
+        SceneManager.LoadScene("DungeonStartScene");
+    }
+
+    public void ReturnToHomeBaseButton(){
+
+        SceneManager.LoadScene("HomeBase");
     }
 }

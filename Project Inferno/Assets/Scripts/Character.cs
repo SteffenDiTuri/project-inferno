@@ -11,6 +11,10 @@ public class Character : MonoBehaviour
     
     public int maxHP;
     public int currentHP;
+    public int maxSP;
+    public int currentSP;
+    public int maxMP;
+    public int currentMP;
     
     public bool TakeDamage(int dmg){
         currentHP -= dmg;
@@ -23,10 +27,24 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Heal(int amount){
+    public void RestoreHP(int amount){
         currentHP += amount;
         if (currentHP > maxHP){
             currentHP = maxHP;
+        }
+    }
+
+    public void RestoreSP(int amount){
+        currentSP += amount;
+        if (currentSP > maxSP){
+            currentSP = maxSP;
+        }
+    }
+
+    public void RestoreMP(int amount){
+        currentMP += amount;
+        if (currentMP > maxMP){
+            currentMP = maxMP;
         }
     }
 

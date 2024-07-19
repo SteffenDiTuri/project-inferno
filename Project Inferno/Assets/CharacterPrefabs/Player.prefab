@@ -3221,9 +3221,11 @@ MonoBehaviour:
   characterLevel: 1
   characterDamage: 10
   maxHP: 25
-  currentHP: 20
-  MP: 0
-  SP: 0
+  currentHP: 25
+  maxSP: 25
+  currentSP: 25
+  maxMP: 25
+  currentMP: 25
   inCombat: 0
   inDungeon: 0
 --- !u!114 &2581492976755771473

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : Character
 {
-    public int MP;
-    public int SP;
     public bool inCombat;
     public bool inDungeon;
 
@@ -48,9 +46,12 @@ public class Player : Character
             characterDamage = data.characterDamage;
             maxHP = data.maxHP;
             currentHP = data.currentHP;
+            maxSP = data.maxSP;
+            currentSP = data.currentSP;
+            maxMP = data.maxMP;
+            currentMP = data.currentMP;
             // this class
-            MP = data.MP;
-            SP = data.SP;
+            
             // Debug.Log("Player data loaded into player object.");
         }
         else
