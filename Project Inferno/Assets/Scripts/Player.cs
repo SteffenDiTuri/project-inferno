@@ -16,6 +16,10 @@ public class Player : Character
     public int MPPotionAmount;
     public int SPPotionAmount;
 
+    void Start(){
+        LoadPlayer();
+    }
+
     public bool IsInCombat()
     {
         return inCombat;
@@ -59,9 +63,15 @@ public class Player : Character
             currentSP = data.currentSP;
             maxMP = data.maxMP;
             currentMP = data.currentMP;
-            // this class
-            
-            // Debug.Log("Player data loaded into player object.");
+
+            goldenSpoonsAmount = data.goldenSpoonsAmount;
+            redCoinsAmount = data.redCoinsAmount;
+            obsidianAmount = data.obsidianAmount;
+            coalAmount = data.coalAmount;
+            metalAmount = data.metalAmount;
+            HPPotionAmount = data.HPPotionAmount;
+            MPPotionAmount = data.MPPotionAmount;
+            SPPotionAmount = data.SPPotionAmount;
         }
         else
         {
