@@ -67,8 +67,10 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PlayerAttack(){
         // damage enemy
         bool isDead = enemy.TakeDamage(player.characterDamage);
+        player.ReduceEndurance(5);
 
         // enemyHUD.SetHP(enemy.currentHP);
+        playerHUD.SetHUD(player);
         enemyHUD.SetHUD(enemy);
         dialogueText.text = "The attack is successful!";
 
@@ -95,9 +97,11 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         bool isDead = player.TakeDamage(enemy.characterDamage);
+        enemy.ReduceEndurance(5);
 
         // playerHUD.SetHP(player.currentHP);
         playerHUD.SetHUD(player);
+        enemyHUD.SetHUD(enemy);
 
         yield return new WaitForSeconds(1f);
 

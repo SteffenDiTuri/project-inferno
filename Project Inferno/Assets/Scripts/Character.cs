@@ -27,6 +27,17 @@ public class Character : MonoBehaviour
         }
     }
 
+    public bool ReduceEndurance(int amount){
+        currentSP -= amount;
+
+        if(currentSP <= 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public void RestoreHP(int amount){
         currentHP += amount;
         if (currentHP > maxHP){
