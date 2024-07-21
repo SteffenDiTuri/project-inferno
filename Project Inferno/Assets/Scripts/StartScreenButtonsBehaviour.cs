@@ -6,6 +6,17 @@ using UnityEngine.SceneManagement;
 public class StartScreenButtonsBehaviour : MonoBehaviour
 {
     public void StartGameButtonAction(){
+        Player player = gameObject.AddComponent<Player>();
+        player.characterName = "Jos";
+        player.characterLevel = 0;
+        player.characterDamage = 10;
+        player.maxHP = 25;
+        player.maxMP = 25;
+        player.maxSP = 25;
+        player.currentHP = 25;
+        player.currentMP = 25;
+        player.currentSP = 25;
+        SaveSystem.SavePlayer(player);
         SceneManager.LoadScene("HomeBase");
     }
 
