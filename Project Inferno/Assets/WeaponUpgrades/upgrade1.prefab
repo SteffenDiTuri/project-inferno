@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63d5a5d4cdf01b42a1fe4ba8a3be67a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldenSpoons: 0
-  redCoins: 0
-  obsidian: 0
-  coal: 0
-  metal: 0
+  goldenSpoons: 36
+  redCoins: 7
+  obsidian: 9
+  coal: 55
+  metal: 1
   unlocked: 0
   title: Damage I
   upgradeLevel: 1

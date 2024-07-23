@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldenSpoons: 0
   redCoins: 0
-  obsidian: 0
+  obsidian: 62
   coal: 0
   metal: 0
   unlocked: 0

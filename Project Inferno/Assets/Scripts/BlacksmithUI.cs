@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class BlacksmithUI : MonoBehaviour
 {
@@ -35,6 +36,13 @@ public class BlacksmithUI : MonoBehaviour
 
     private Player player;
     private Blacksmith blacksmith;
+
+    public List<Item> allItems;
+    public GameObject lootItem;
+
+    public TMP_Text componentDetailTitleText;
+
+    public TMP_Text redCoins;
 
     private void Start()
     {
@@ -84,5 +92,60 @@ public class BlacksmithUI : MonoBehaviour
     {
         GameObject blacksmithGO = GameObject.Find("BlackSmithArea");
         blacksmith = blacksmithGO.GetComponent<Blacksmith>();
+    }
+
+    public void showCost(WeaponUpgrade upgrade)
+    {
+        Transform basement = this.transform.Find("ComponentDetail").Find("MaterialCost").Find("Items");
+        foreach(Transform child in basement)
+        {
+            Destroy(child.gameObject);
+        }
+
+        componentDetailTitleText.text = upgrade.title;
+        float y = 0;
+        foreach (Item item in allItems)
+        {
+            if (item.itemName.Equals("Golden Spoon") && upgrade.goldenSpoons > 0)
+            {
+                GameObject itemInstance = Instantiate(lootItem, this.transform.Find("ComponentDetail").Find("MaterialCost").Find("Items"));
+                itemInstance.transform.position = itemInstance.transform.position + new Vector3(0, y, 0);
+                itemInstance.GetComponentInChildren<Image>().sprite = item.sprite.GetComponent<SpriteRenderer>().sprite;
+                itemInstance.GetComponentInChildren<TextMeshProUGUI>().text = item.itemName + " " + upgrade.goldenSpoons.ToString();
+                itemInstance.transform.localScale = new Vector3(2, 2, 2);
+                y -= 45;
+            }
+            else if (item.itemName.Equals("Obsidian") && upgrade.obsidian > 0)
+            {
+                GameObject itemInstance = Instantiate(lootItem, this.transform.Find("ComponentDetail").Find("MaterialCost").Find("Items"));
+                itemInstance.transform.position = itemInstance.transform.position + new Vector3(0, y, 0);
+                itemInstance.GetComponentInChildren<Image>().sprite = item.sprite.GetComponent<SpriteRenderer>().sprite;
+                itemInstance.GetComponentInChildren<TextMeshProUGUI>().text = item.itemName + " " + upgrade.obsidian.ToString();
+                itemInstance.transform.localScale = new Vector3(2, 2, 2);
+                y -= 45;
+            }
+            else if (item.itemName.Equals("Coal") && upgrade.coal > 0)
+            {
+                GameObject itemInstance = Instantiate(lootItem, this.transform.Find("ComponentDetail").Find("MaterialCost").Find("Items"));
+                itemInstance.transform.position = itemInstance.transform.position + new Vector3(0, y, 0);
+                itemInstance.GetComponentInChildren<Image>().sprite = item.sprite.GetComponent<SpriteRenderer>().sprite;
+                itemInstance.GetComponentInChildren<TextMeshProUGUI>().text = item.itemName + " " + upgrade.coal.ToString();
+                itemInstance.transform.localScale = new Vector3(2, 2, 2);
+                y -= 45;
+            }
+            else if (item.itemName.Equals("Metal") && upgrade.metal > 0)
+            {
+                GameObject itemInstance = Instantiate(lootItem, this.transform.Find("ComponentDetail").Find("MaterialCost").Find("Items"));
+                itemInstance.transform.position = itemInstance.transform.position + new Vector3(0, y, 0);
+                itemInstance.GetComponentInChildren<Image>().sprite = item.sprite.GetComponent<SpriteRenderer>().sprite;
+                itemInstance.GetComponentInChildren<TextMeshProUGUI>().text = item.itemName + " " + upgrade.metal.ToString();
+                itemInstance.transform.localScale = new Vector3(2, 2, 2);
+                y -= 45;
+            }
+            else if (item.itemName.Equals("Red Coins"))
+            {
+                redCoins.text = upgrade.redCoins.ToString();
+            }
+        }
     }
 }

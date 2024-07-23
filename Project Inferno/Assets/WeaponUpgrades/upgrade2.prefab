@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldenSpoons: 0
-  redCoins: 0
+  redCoins: 5
   obsidian: 0
   coal: 0
-  metal: 0
+  metal: 9
   unlocked: 0
   title: Damage II
   upgradeLevel: 2
