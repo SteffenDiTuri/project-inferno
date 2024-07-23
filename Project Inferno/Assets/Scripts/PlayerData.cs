@@ -26,6 +26,8 @@ public class PlayerData
     public int MPPotionAmount;
     public int SPPotionAmount;
 
+    public int weaponLevel;
+
     // public float[] position;
 
     public PlayerData (Player player){
@@ -48,6 +50,7 @@ public class PlayerData
         MPPotionAmount = player.MPPotionAmount;
         SPPotionAmount = player.SPPotionAmount;
 
+        weaponLevel = player.weaponLevel;
         // position = new float[3];
         // position[0] = player.transform.position.x;
         // position[1] = player.transform.position.y;

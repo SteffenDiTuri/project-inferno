@@ -16,6 +16,8 @@ public class Player : Character
     public int MPPotionAmount;
     public int SPPotionAmount;
 
+    public int weaponLevel;
+
     void Start(){
         LoadPlayer();
     }
@@ -72,6 +74,8 @@ public class Player : Character
             HPPotionAmount = data.HPPotionAmount;
             MPPotionAmount = data.MPPotionAmount;
             SPPotionAmount = data.SPPotionAmount;
+
+            weaponLevel = data.weaponLevel;
         }
         else
         {
