@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 5.0f;
+    private float _speed = 3.0f;
     private Player player;
 
     // Distance the player must travel to trigger a potential encounter
