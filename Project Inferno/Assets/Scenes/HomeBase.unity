@@ -3284,12 +3284,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6239268013706194272, guid: 2ada83dbe9b291c48a18ffce2b9d9766, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6239268013706194272, guid: 2ada83dbe9b291c48a18ffce2b9d9766, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1599646768}
+      objectReference: {fileID: 986509044}
     - target: {fileID: 6239268013706194272, guid: 2ada83dbe9b291c48a18ffce2b9d9766, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: buyUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 6239268013706194272, guid: 2ada83dbe9b291c48a18ffce2b9d9766, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlacksmithUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8887182653016522503, guid: 2ada83dbe9b291c48a18ffce2b9d9766, type: 3}
       propertyPath: m_Name
@@ -3313,6 +3321,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3593587321216221466, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
+      propertyPath: coalAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593587321216221466, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
+      propertyPath: metalAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593587321216221466, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
+      propertyPath: HPPotionAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593587321216221466, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
+      propertyPath: MPPotionAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593587321216221466, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
+      propertyPath: SPPotionAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593587321216221466, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
+      propertyPath: obsidianAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593587321216221466, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
+      propertyPath: redCoinsAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593587321216221466, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
+      propertyPath: goldenSpoonsAmount
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4772117892804698481, guid: 3d9dc1d54a0ece14789a820513279d10, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

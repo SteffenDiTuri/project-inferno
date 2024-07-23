@@ -44,6 +44,8 @@ public class BlacksmithUI : MonoBehaviour
 
     public TMP_Text redCoins;
 
+    private WeaponUpgrade currentUpgrade;
+
     private void Start()
     {
         updateBlacksmithUI();
@@ -96,6 +98,7 @@ public class BlacksmithUI : MonoBehaviour
 
     public void showCost(WeaponUpgrade upgrade)
     {
+        currentUpgrade = upgrade;
         Transform basement = this.transform.Find("ComponentDetail").Find("MaterialCost").Find("Items");
         foreach(Transform child in basement)
         {
@@ -146,6 +149,21 @@ public class BlacksmithUI : MonoBehaviour
             {
                 redCoins.text = upgrade.redCoins.ToString();
             }
+        }
+    }
+
+    public void buyUpgrade()
+    {
+        Debug.Log("clicked");
+        if (!currentUpgrade.unlocked && player.goldenSpoonsAmount >= currentUpgrade.goldenSpoons && player.redCoinsAmount >= currentUpgrade.redCoins && player.obsidianAmount >= currentUpgrade.obsidian && player.coalAmount >= currentUpgrade.coal && player.metalAmount >= currentUpgrade.metal)
+        {
+            player.goldenSpoonsAmount -= currentUpgrade.goldenSpoons;
+            player.redCoinsAmount -= currentUpgrade.redCoins;
+            player.obsidianAmount -= currentUpgrade.obsidian;
+            player.coalAmount -= currentUpgrade.coal;
+            player.metalAmount -= currentUpgrade.metal;
+            currentUpgrade.unlocked = true;
+            player.weaponLevel++;
         }
     }
 }
