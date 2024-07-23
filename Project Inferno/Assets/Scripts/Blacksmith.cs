@@ -17,6 +17,7 @@ public class Blacksmith : MonoBehaviour
             player.coalAmount -= weaponUpgrade.coal;
             player.metalAmount -= weaponUpgrade.metal;
             weaponUpgrade.unlocked = true;
+            player.weaponLevel ++;
             return true;
         }
         return false;

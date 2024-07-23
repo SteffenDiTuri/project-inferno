@@ -50,3 +50,5 @@ MonoBehaviour:
   coal: 0
   metal: 0
   unlocked: 0
+  title: Damage VIII
+  upgradeLevel: 8

@@ -10,4 +10,7 @@ public class WeaponUpgrade : MonoBehaviour
     public int coal;
     public int metal;
     public bool unlocked;
+
+    public string title;
+    public int upgradeLevel;
 }
