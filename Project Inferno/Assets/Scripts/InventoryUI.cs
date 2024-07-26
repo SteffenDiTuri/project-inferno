@@ -13,6 +13,7 @@ public class InventoryUI : MonoBehaviour
     public TMP_Text HPPotion;
     public TMP_Text MPPotion;
     public TMP_Text SPPotion;
+    public TMP_Text weaponLevel;
 
     private Player player;
 
@@ -32,6 +33,7 @@ public class InventoryUI : MonoBehaviour
         HPPotion.text = player.HPPotionAmount.ToString();
         MPPotion.text = player.MPPotionAmount.ToString();
         SPPotion.text = player.SPPotionAmount.ToString();
+        weaponLevel.text = player.weaponLevel.ToString();
     }
 
     private void findPlayer()

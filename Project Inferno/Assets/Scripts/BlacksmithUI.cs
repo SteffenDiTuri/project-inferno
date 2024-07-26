@@ -46,6 +46,12 @@ public class BlacksmithUI : MonoBehaviour
 
     private WeaponUpgrade currentUpgrade;
 
+    public TMP_Text goldenSpoonsText;
+    public TMP_Text redCoinsText;
+    public TMP_Text obsidianText;
+    public TMP_Text coalText;
+    public TMP_Text metalText;
+
     private void OnEnable()
     {
         updateBlacksmithUI();
@@ -55,10 +61,10 @@ public class BlacksmithUI : MonoBehaviour
     {
         findPlayer();
         findBlacksmith();
-
+        
         upgradeOneTitleText.text = blacksmith.weaponUpgrades[0].title;
         upgradeOneLevelText.text = blacksmith.weaponUpgrades[0].upgradeLevel.ToString();
-        if(player.weaponLevel == 1)
+        if(player.weaponLevel == 0)
         {
             blacksmith.weaponUpgrades[0].buyable = true;
         }
@@ -69,7 +75,7 @@ public class BlacksmithUI : MonoBehaviour
 
         upgradeTwoTitleText.text = blacksmith.weaponUpgrades[1].title;
         upgradeTwoLevelText.text = blacksmith.weaponUpgrades[1].upgradeLevel.ToString();
-        if (player.weaponLevel == 2)
+        if (player.weaponLevel == 1)
         {
             blacksmith.weaponUpgrades[1].buyable = true;
         }
@@ -80,7 +86,7 @@ public class BlacksmithUI : MonoBehaviour
 
         upgradeThreeTitleText.text = blacksmith.weaponUpgrades[2].title;
         upgradeThreeLevelText.text = blacksmith.weaponUpgrades[2].upgradeLevel.ToString();
-        if (player.weaponLevel == 3)
+        if (player.weaponLevel == 2)
         {
             blacksmith.weaponUpgrades[2].buyable = true;
         }
@@ -91,7 +97,7 @@ public class BlacksmithUI : MonoBehaviour
 
         upgradeFourTitleText.text = blacksmith.weaponUpgrades[3].title;
         upgradeFourLevelText.text = blacksmith.weaponUpgrades[3].upgradeLevel.ToString();
-        if (player.weaponLevel == 4)
+        if (player.weaponLevel == 3)
         {
             blacksmith.weaponUpgrades[3].buyable = true;
         }
@@ -102,7 +108,7 @@ public class BlacksmithUI : MonoBehaviour
 
         upgradeFiveTitleText.text = blacksmith.weaponUpgrades[4].title;
         upgradeFiveLevelText.text = blacksmith.weaponUpgrades[4].upgradeLevel.ToString();
-        if (player.weaponLevel == 5)
+        if (player.weaponLevel == 4)
         {
             blacksmith.weaponUpgrades[4].buyable = true;
         }
@@ -113,7 +119,7 @@ public class BlacksmithUI : MonoBehaviour
 
         upgradeSixTitleText.text = blacksmith.weaponUpgrades[5].title;
         upgradeSixLevelText.text = blacksmith.weaponUpgrades[5].upgradeLevel.ToString();
-        if (player.weaponLevel == 6)
+        if (player.weaponLevel == 5)
         {
             blacksmith.weaponUpgrades[5].buyable = true;
         }
@@ -124,7 +130,7 @@ public class BlacksmithUI : MonoBehaviour
 
         upgradeSevenTitleText.text = blacksmith.weaponUpgrades[6].title;
         upgradeSevenLevelText.text = blacksmith.weaponUpgrades[6].upgradeLevel.ToString();
-        if (player.weaponLevel == 7)
+        if (player.weaponLevel == 6)
         {
             blacksmith.weaponUpgrades[6].buyable = true;
         }
@@ -135,7 +141,7 @@ public class BlacksmithUI : MonoBehaviour
 
         upgradeEightTitleText.text = blacksmith.weaponUpgrades[7].title;
         upgradeEightLevelText.text = blacksmith.weaponUpgrades[7].upgradeLevel.ToString();
-        if (player.weaponLevel == 8)
+        if (player.weaponLevel == 7)
         {
             blacksmith.weaponUpgrades[7].buyable = true;
         }
@@ -146,7 +152,7 @@ public class BlacksmithUI : MonoBehaviour
 
         upgradeNineTitleText.text = blacksmith.weaponUpgrades[8].title;
         upgradeNineLevelText.text = blacksmith.weaponUpgrades[8].upgradeLevel.ToString();
-        if (player.weaponLevel == 9)
+        if (player.weaponLevel == 8)
         {
             blacksmith.weaponUpgrades[8].buyable = true;
         }
@@ -154,6 +160,12 @@ public class BlacksmithUI : MonoBehaviour
         {
             blacksmith.weaponUpgrades[8].buyable = false;
         }
+
+        goldenSpoonsText.text = player.goldenSpoonsAmount.ToString();
+        redCoinsText.text = player.redCoinsAmount.ToString();
+        obsidianText.text = player.obsidianAmount.ToString();
+        coalText.text = player.coalAmount.ToString();
+        metalText.text = player.metalAmount.ToString();
     }
 
     private void findPlayer()

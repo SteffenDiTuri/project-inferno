@@ -16,12 +16,14 @@ public class StartScreenButtonsBehaviour : MonoBehaviour
         player.currentHP = 25;
         player.currentMP = 25;
         player.currentSP = 25;
+        player.weaponLevel = 0;
         SaveSystem.SavePlayer(player);
         SceneManager.LoadScene("HomeBase");
     }
 
     public void LoadSaveButtonAction(){
-        Debug.Log("Load Save Button Clicked...");
+        SceneManager.LoadScene("HomeBase");
+        SaveSystem.LoadPlayer();
     }
 
     public void SettingsButtonAction(){
