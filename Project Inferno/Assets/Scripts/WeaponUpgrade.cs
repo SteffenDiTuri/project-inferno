@@ -9,7 +9,7 @@ public class WeaponUpgrade : MonoBehaviour
     public int obsidian;
     public int coal;
     public int metal;
-    public bool unlocked;
+    public bool buyable;
 
     public string title;
     public int upgradeLevel;

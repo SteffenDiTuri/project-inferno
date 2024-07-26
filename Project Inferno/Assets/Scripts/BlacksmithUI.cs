@@ -46,7 +46,7 @@ public class BlacksmithUI : MonoBehaviour
 
     private WeaponUpgrade currentUpgrade;
 
-    private void Start()
+    private void OnEnable()
     {
         updateBlacksmithUI();
     }
@@ -58,30 +58,102 @@ public class BlacksmithUI : MonoBehaviour
 
         upgradeOneTitleText.text = blacksmith.weaponUpgrades[0].title;
         upgradeOneLevelText.text = blacksmith.weaponUpgrades[0].upgradeLevel.ToString();
+        if(player.weaponLevel == 1)
+        {
+            blacksmith.weaponUpgrades[0].buyable = true;
+        }
+        else
+        {
+            blacksmith.weaponUpgrades[0].buyable = false;
+        }
 
         upgradeTwoTitleText.text = blacksmith.weaponUpgrades[1].title;
         upgradeTwoLevelText.text = blacksmith.weaponUpgrades[1].upgradeLevel.ToString();
+        if (player.weaponLevel == 2)
+        {
+            blacksmith.weaponUpgrades[1].buyable = true;
+        }
+        else
+        {
+            blacksmith.weaponUpgrades[1].buyable = false;
+        }
 
         upgradeThreeTitleText.text = blacksmith.weaponUpgrades[2].title;
         upgradeThreeLevelText.text = blacksmith.weaponUpgrades[2].upgradeLevel.ToString();
+        if (player.weaponLevel == 3)
+        {
+            blacksmith.weaponUpgrades[2].buyable = true;
+        }
+        else
+        {
+            blacksmith.weaponUpgrades[2].buyable = false;
+        }
 
         upgradeFourTitleText.text = blacksmith.weaponUpgrades[3].title;
         upgradeFourLevelText.text = blacksmith.weaponUpgrades[3].upgradeLevel.ToString();
+        if (player.weaponLevel == 4)
+        {
+            blacksmith.weaponUpgrades[3].buyable = true;
+        }
+        else
+        {
+            blacksmith.weaponUpgrades[3].buyable = false;
+        }
 
         upgradeFiveTitleText.text = blacksmith.weaponUpgrades[4].title;
         upgradeFiveLevelText.text = blacksmith.weaponUpgrades[4].upgradeLevel.ToString();
+        if (player.weaponLevel == 5)
+        {
+            blacksmith.weaponUpgrades[4].buyable = true;
+        }
+        else
+        {
+            blacksmith.weaponUpgrades[4].buyable = false;
+        }
 
         upgradeSixTitleText.text = blacksmith.weaponUpgrades[5].title;
         upgradeSixLevelText.text = blacksmith.weaponUpgrades[5].upgradeLevel.ToString();
+        if (player.weaponLevel == 6)
+        {
+            blacksmith.weaponUpgrades[5].buyable = true;
+        }
+        else
+        {
+            blacksmith.weaponUpgrades[5].buyable = false;
+        }
 
         upgradeSevenTitleText.text = blacksmith.weaponUpgrades[6].title;
         upgradeSevenLevelText.text = blacksmith.weaponUpgrades[6].upgradeLevel.ToString();
+        if (player.weaponLevel == 7)
+        {
+            blacksmith.weaponUpgrades[6].buyable = true;
+        }
+        else
+        {
+            blacksmith.weaponUpgrades[6].buyable = false;
+        }
 
         upgradeEightTitleText.text = blacksmith.weaponUpgrades[7].title;
         upgradeEightLevelText.text = blacksmith.weaponUpgrades[7].upgradeLevel.ToString();
+        if (player.weaponLevel == 8)
+        {
+            blacksmith.weaponUpgrades[7].buyable = true;
+        }
+        else
+        {
+            blacksmith.weaponUpgrades[7].buyable = false;
+        }
 
         upgradeNineTitleText.text = blacksmith.weaponUpgrades[8].title;
         upgradeNineLevelText.text = blacksmith.weaponUpgrades[8].upgradeLevel.ToString();
+        if (player.weaponLevel == 9)
+        {
+            blacksmith.weaponUpgrades[8].buyable = true;
+        }
+        else
+        {
+            blacksmith.weaponUpgrades[8].buyable = false;
+        }
     }
 
     private void findPlayer()
@@ -154,16 +226,15 @@ public class BlacksmithUI : MonoBehaviour
 
     public void buyUpgrade()
     {
-        Debug.Log("clicked");
-        if (!currentUpgrade.unlocked && player.goldenSpoonsAmount >= currentUpgrade.goldenSpoons && player.redCoinsAmount >= currentUpgrade.redCoins && player.obsidianAmount >= currentUpgrade.obsidian && player.coalAmount >= currentUpgrade.coal && player.metalAmount >= currentUpgrade.metal)
+        if (currentUpgrade.buyable && player.goldenSpoonsAmount >= currentUpgrade.goldenSpoons && player.redCoinsAmount >= currentUpgrade.redCoins && player.obsidianAmount >= currentUpgrade.obsidian && player.coalAmount >= currentUpgrade.coal && player.metalAmount >= currentUpgrade.metal)
         {
             player.goldenSpoonsAmount -= currentUpgrade.goldenSpoons;
             player.redCoinsAmount -= currentUpgrade.redCoins;
             player.obsidianAmount -= currentUpgrade.obsidian;
             player.coalAmount -= currentUpgrade.coal;
             player.metalAmount -= currentUpgrade.metal;
-            currentUpgrade.unlocked = true;
             player.weaponLevel++;
+            updateBlacksmithUI();
         }
     }
 }

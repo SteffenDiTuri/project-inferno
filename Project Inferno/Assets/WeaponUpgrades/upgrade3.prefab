@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldenSpoons: 7
   redCoins: 5
-  obsidian: 789521
+  obsidian: 7
   coal: 5
   metal: 0
-  unlocked: 0
+  buyable: 0
   title: Damage III
   upgradeLevel: 3
