@@ -7,6 +7,7 @@ public class CrusadeButtonsBehaviour : MonoBehaviour
 {
     public GameObject CrusadeConfirmationScreen;
     public GameObject CrusadeSelectionScreen;
+    private Player player;
     
     public void Start(){
         CrusadeConfirmationScreen.SetActive(false);
@@ -29,13 +30,20 @@ public class CrusadeButtonsBehaviour : MonoBehaviour
     }
 
     public void StartCrusadeButton(){
-
+        findPlayer();
+        SaveSystem.SavePlayer(player);
         SceneManager.LoadScene("DungeonStartScene");
     }
 
     public void ReturnToHomeBaseButton(){
-
+        findPlayer();
+        SaveSystem.SavePlayer(player);
         SceneManager.LoadScene("HomeBase");
     }
 
+    private void findPlayer()
+    {
+        GameObject playerGO = GameObject.Find("Player");
+        player = playerGO.GetComponent<Player>();
+    }
 }
