@@ -69,25 +69,31 @@ public class BattleSystem : MonoBehaviour
     }
 
     IEnumerator PlayerAttack(){
-        // damage enemy
-        bool isDead = enemy.TakeDamage(player.characterDamage);
-        player.ReduceEndurance(5);
+        if (player.currentSP >= 5) {
+            // damage enemy
+            bool isDead = enemy.TakeDamage(player.characterDamage);
+            player.ReduceEndurance(5);
+            // enemyHUD.SetHP(enemy.currentHP);
+            playerHUD.SetHUD(player);
+            enemyHUD.SetHUD(enemy);
+            dialogueText.text = "the attack is successful!";
 
-        // enemyHUD.SetHP(enemy.currentHP);
-        playerHUD.SetHUD(player);
-        enemyHUD.SetHUD(enemy);
-        dialogueText.text = "the attack is successful!";
+            yield return new WaitForSeconds(2f);
 
-        yield return new WaitForSeconds(2f);
-
-        // check if enemy is dead
-        if (isDead){
-            // end battle
-            state = BattleState.WON;
-            StartCoroutine(EndBattle());
-        }
-        else {
-            // enemy turn
+            // check if enemy is dead
+            if (isDead){
+                // end battle
+                state = BattleState.WON;
+                StartCoroutine(EndBattle());
+            }
+            else {
+                // enemy turn
+                state = BattleState.ENEMYTURN;
+                StartCoroutine(EnemyTurn());
+            }
+        } else {
+            dialogueText.text = "you are too weak...";
+            yield return new WaitForSeconds(2f);
             state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
         }

@@ -30,14 +30,19 @@ public class Character : MonoBehaviour
         }
     }
 
-    public bool ReduceEndurance(int amount){
+    public void ReduceEndurance(int amount){
         currentSP -= amount;
 
         if(currentSP <= 0){
-            return true;
+            currentSP = 0;
         }
-        else {
-            return false;
+    }
+
+    public void ReduceMagic(int amount){
+        currentMP -= amount;
+
+        if(currentMP <= 0){
+            currentMP = 0;
         }
     }
 
