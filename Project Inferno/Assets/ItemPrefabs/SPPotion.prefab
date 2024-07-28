@@ -48,7 +48,7 @@ MonoBehaviour:
   sprite: {fileID: 5528180737619568153}
   dropRate: 0
   itemName: SP Potion
-  amount: 0
+  amount: 7
 --- !u!1 &5528180737619568153
 GameObject:
   m_ObjectHideFlags: 0
