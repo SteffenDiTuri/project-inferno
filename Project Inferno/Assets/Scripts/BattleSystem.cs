@@ -247,7 +247,9 @@ public class BattleSystem : MonoBehaviour
 
     // game over screen methods
     public void RestartCrusadeButton(){
-
+        player.currentHP = player.maxHP;
+        player.currentSP = player.maxSP;
+        player.currentMP = player.maxMP;
         SceneManager.LoadScene("DungeonStartScene");
     }
 
@@ -288,7 +290,19 @@ public class BattleSystem : MonoBehaviour
                     player.SPPotionAmount += item.amount;
                     break;
             }
-            Destroy(item);
+        }
+
+        int i = 0;
+        GameObject[] allChildren = new GameObject[victoryScreen.transform.Find("StartCrusadeElement").Find("Image").Find("Loot").childCount];
+        foreach (Transform child in victoryScreen.transform.Find("StartCrusadeElement").Find("Image").Find("Loot"))
+        {
+            allChildren[i] = child.gameObject;
+            i += 1;
+        }
+
+        foreach (GameObject child in allChildren)
+        {
+            Destroy(child.gameObject);
         }
 
         // Instead of loading a new scene, call the EndBattle method in PlayerMovement

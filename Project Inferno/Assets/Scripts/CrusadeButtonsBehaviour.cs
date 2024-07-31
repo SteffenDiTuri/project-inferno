@@ -31,6 +31,9 @@ public class CrusadeButtonsBehaviour : MonoBehaviour
 
     public void StartCrusadeButton(){
         findPlayer();
+        player.currentHP = player.maxHP;
+        player.currentSP = player.maxSP;
+        player.currentMP = player.maxMP;
         SaveSystem.SavePlayer(player);
         SceneManager.LoadScene("DungeonStartScene");
     }
